@@ -67,7 +67,7 @@ type Env struct {
 }
 
 func main() {
-	var api = "KZkTZs4rE8qM4hftQtgOSARqyUhJxYuE"
+	var api = "YOUR API KEY" // Use Your API Key to try this program
 
 	db, err := storm.Open(filepath.Join(".", "gallery.db"))
 	if err != nil {
