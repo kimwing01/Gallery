@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gallery API Task</title>
+<script type="text/javascript" src="jquery.js"> </script> 
+<script>
+
+        $(function() {
+           $.getJSON('results.json?m=text', function(data) {
+            data.forEach(function (r) {
+                if (r.id%2 == 0){ bcolor='lightgreen';}else{bcolor='white';}
+                  var tblRow = "<tr style='background:"+bcolor+";'>" 
+                    + "<td style='padding:10px;'>" + r.id + "</td>" 
+                    + "<td style='padding:10px;text-align: left'>" + r.description + "</td>" 
+                    + "<td style='padding:10px'width='27%'>" + r.filename + "</td>" 
+                    + "<td style='padding:10px;text-align: left;' width='35%'>" + r.src + "</td>" 
+                    + "</tr>"
+                   $(tblRow).appendTo("#user tbody");
+             }).error(function(){
+                console.log('error: json not loaded');
+            });
+           });
+        });
+        </script>
+
+<style>
+#title{
+    border-bottom: 1px solid silver;
+    padding:10px;
+    border-radius: 1px;
+    color:white;
+    
+}
+</style>
+</head>
+
+<body>
+<center>
+    <h1 style="margin:20px">&#128247; Gallery List &#128247;</h1>
+  <table id= "user" cellpadding="0" cellspacing="0" width="99%" style="table-layout: fixed;margin-top:20px;border:1px solid springgreen;border-radius: 10px;font-size: 14px;text-align: center">
+     <tr style="border-bottom: 1px solid silver;background: rgb(64, 233, 64);">
+       <th width="3%" id="title">Title</th>
+       <th width="26%" id="title">Description</th>
+       <th width="35%" id="title">Filename</th>
+       <th width="52%" id="title">Original Link</th>
+     </tr>
+     <tbody>
+
+     </tbody>
+   </table>
+</center>
+</body>
+</html>
